@@ -14,7 +14,7 @@ export const FETCH_FAIL = "FETCH_FAIL";
 //3. is our action creator returning a function?
 //4. if so, pass dispatch into that function and let the action do what it wants.
 
-export const getPerson = () => {
+export const getCountry = () => {
     return (dispatch) => {
         //1. Fetch_Start
         dispatch(fetchStart());
@@ -24,7 +24,7 @@ export const getPerson = () => {
         .then(resp => {
             //3. if fetch is successful, Fetch_Success with that data
             console.log("Resp from holidays countries: ", resp.data.countries);
-            dispatch(fetchSuccess(resp.data.countries[0]));
+            dispatch(fetchSuccess(resp.data.countries[1]));
             //dispatch(fetchSuccess(resp.data.results[0]));
         })
         .catch(err=>{
@@ -40,8 +40,8 @@ export const fetchStart = ()=> {
     return({type: FETCH_START});
 }
 
-export const fetchSuccess = (person)=> {
-    return({type: FETCH_SUCCESS, payload:person});
+export const fetchSuccess = (country)=> {
+    return({type: FETCH_SUCCESS, payload:country});
 }
 
 export const fetchFail = (error)=> {

@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchStart, fetchSuccess, fetchFail, getPerson }  from './../actions';
+import { fetchStart, fetchSuccess, fetchFail, getCountry }  from './../actions';
 
 const Country = (props) => {
   const { country, isFetching, error } = props;
   useEffect(() => {
-    props.dispatch(getPerson());
+    props.dispatch(getCountry());
   }, []);
 
   const handleClick = () => {
@@ -25,7 +25,7 @@ const Country = (props) => {
     <>
       <div>
         <h2>Country: {country.name}</h2>
-        <img src={country.flag}/>
+        <img src={country.flag} alt="country flag"/>
       </div>
       <button onClick={handleClick}>Get new country</button>
     </>
