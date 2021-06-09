@@ -23,9 +23,13 @@ export const getCountry = () => {
         axios.get(`${COUNTRIES_URL}?key=${API_KEY}`)
         .then(resp => {
             //3. if fetch is successful, Fetch_Success with that data
-            console.log("Resp from holidays countries: ", resp.data.countries);
-            dispatch(fetchSuccess(resp.data.countries[1]));
-            //dispatch(fetchSuccess(resp.data.results[0]));
+           
+            const max = resp.data.countries.length;
+            const randomCountryIndex = Math.floor(Math.random() * max);
+
+            console.log("randomCountryIndex: ", randomCountryIndex);
+
+            dispatch(fetchSuccess(resp.data.countries[randomCountryIndex]));
         })
         .catch(err=>{
             //4. if fetch is not successful, Fetch_Fail with error message
